@@ -5,6 +5,7 @@ A browser-based reviewer for Topics 8–12.1, organized around the professor’s
 - **56 multiple-choice questions** across eight topic areas, with shuffled answers, explanations, session scores, answer review and retries for missed questions.
 - **132 flashcards**, including recall, explanation and application prompts; reveal answers and rate cards for another review.
 - **Full searchable reviewer**, worked examples, source corrections, original quiz answers and **26 original visual plates**.
+- Dark mode by default, with a light/dark toggle and a saved browser preference.
 - Topic/objective filters and browser-local progress. No accounts, analytics, remote fonts, external scripts or build dependencies.
 - Printable [PDF](reviewers/ICE409_Complete_Reviewer.pdf), editable [Word](reviewers/ICE409_Complete_Reviewer.docx), and [Markdown](reviewers/ICE409_Complete_Reviewer.md).
 
@@ -46,6 +47,7 @@ Browser checks can be run with Playwright installed:
 python3 -m http.server 8000
 # In another terminal:
 node tests/browser.cjs
+node tests/theme.cjs
 ```
 
 Rebuild the standalone HTML after changing the app or content:

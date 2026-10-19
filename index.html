@@ -1,8 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#133e45">
+<meta name="theme-color" content="#10191e">
+<script>
+// Apply the saved appearance before the first paint; dark mode is the default.
+try {
+  const savedTheme = localStorage.getItem('ice409-theme');
+  document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+} catch { document.documentElement.dataset.theme = 'dark'; }
+</script>
 <meta name="description" content="ICE 409 practice quizzes, flashcards and a complete reviewer for ASME, ISO, ISA, functional safety, hazardous areas and installation.">
 <title>ICE 409 · Practice studio</title>
 <link rel="stylesheet" href="interactive/style.css">
@@ -10,7 +17,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to study content</a>
-<header><a class="brand" href="index.html" aria-label="ICE 409 Practice studio home"><span class="brand-icon">409</span><span>ICE 409<small>Codes, standards & professional ethics</small></span></a><a class="download" href="reviewers/ICE409_Complete_Reviewer.pdf">PDF reviewer ↗</a></header>
+<header><a class="brand" href="index.html" aria-label="ICE 409 Practice studio home"><span class="brand-icon">409</span><span>ICE 409<small>Codes, standards & professional ethics</small></span></a><div class="header-actions"><button id="theme-toggle" class="secondary compact" type="button" aria-pressed="true" aria-label="Dark mode">Light mode</button><a class="download" href="reviewers/ICE409_Complete_Reviewer.pdf">PDF reviewer ↗</a></div></header>
 <main id="main">
 <section class="intro"><div><p class="eyebrow">YOUR EXAM PRACTICE STUDIO</p><h1>Know the rule.<br><em>Apply the reasoning.</em></h1><p class="lead">Eight topic areas. One place to remember, understand, and apply what you’ve learned.</p><div class="chips"><span>56 quiz questions</span><span id="card-count"></span><span>Full reviewer + visual plates</span></div></div><aside class="progress-card"><p class="eyebrow">YOUR QUIZ PROGRESS</p><strong id="progress-number">0 / 56</strong><p>questions answered correctly on your latest attempt</p><progress id="progress-bar" value="0" max="56" aria-label="Questions answered correctly on latest attempt"></progress><div class="progress-foot"><span id="attempts">0 answered · 0 attempts</span><button class="text-btn" id="reset-progress">Reset</button></div><small id="storage-status">Saved only in this browser. No account needed.</small></aside></section>
 <nav class="tabs" aria-label="Study modes"><button class="tab active" data-mode="quiz" aria-pressed="true">01 <span>Practice quiz</span></button><button class="tab" data-mode="cards" aria-pressed="false">02 <span>Flashcards</span></button><button class="tab" data-mode="reader" aria-pressed="false">03 <span>Full reviewer</span></button></nav>

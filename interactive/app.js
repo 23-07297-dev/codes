@@ -1,6 +1,20 @@
 (() => {
   'use strict';
   const C=window.ReviewCore,D=window.STUDY_DATA,$=id=>document.getElementById(id),KEY='ice409-study-v1';
+  // Appearance has its own key, so changing themes never resets study progress.
+  function updateThemeButton() {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    $('theme-toggle').textContent = dark ? 'Light mode' : 'Dark mode';
+    $('theme-toggle').setAttribute('aria-pressed', String(dark));
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#10191e' : '#f5f4ef';
+  }
+  $('theme-toggle').addEventListener('click', () => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('ice409-theme', theme); } catch { /* The toggle still works without storage. */ }
+    updateThemeButton();
+  });
+  updateThemeButton();
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const inline=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
   let store={history:{},cards:{}},persistent=true,mode='quiz',session=null,cardList=[],cardIndex=0;
