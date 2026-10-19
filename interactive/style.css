@@ -40,3 +40,35 @@ input::placeholder { color:var(--muted); opacity:1; }
   :root[data-theme] { color-scheme:light; --bg:white; --white:white; --ink:#173334; --muted:#576969; --teal:#125e61; --line:#d8dfd9; --soft:#edf3ee; }
   body { background:white; color:#173334; }
 }
+/* Full-length mock exam */
+.exam-layout { grid-template-columns:minmax(0,1fr); }
+.exam-layout .content { max-width:1000px; width:100%; margin:0 auto; }
+#exam-duration { max-width:400px; }
+a.secondary { text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+.exam-topbar,.exam-map-heading { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:16px; }
+.exam-clock { text-align:right; flex-shrink:0; }
+.exam-clock small { display:block; font-size:11px; color:var(--muted); }
+.exam-clock strong { font-size:24px; font-variant-numeric:tabular-nums; color:var(--teal); }
+.exam-clock.urgent strong { color:var(--red); }
+#exam-prompt { margin-top:25px; line-height:1.55; }
+.exam-controls { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+#exam-flag[aria-pressed=true] { border-style:dashed; background:var(--soft); }
+.exam-map-heading { margin-top:36px; }
+.exam-map-heading h3 { margin:0; }
+.exam-map { display:grid; grid-template-columns:repeat(auto-fill,minmax(48px,1fr)); gap:9px; }
+.exam-map button { min-height:44px; border-radius:7px; background:var(--white); color:var(--ink); border:1px solid var(--line); font-size:12px; font-weight:700; }
+.exam-map button.answered { background:var(--soft); border-color:var(--teal); }
+.exam-map button.flagged { border:2px dashed #c9a657; }
+.exam-map button.current { outline:3px solid var(--teal); outline-offset:2px; }
+#exam-review { margin-top:18px; }
+#exam-score-summary { font-size:17px; }
+@media(max-width:700px) {
+  .tabs { flex-wrap:wrap; }
+  .tab { flex:1 0 45%; justify-content:center; }
+  .exam-topbar { align-items:start; gap:8px; }
+  .exam-clock strong { font-size:20px; }
+  .exam-controls { gap:8px; }
+  .exam-controls button { flex:1 1 43%; }
+  .exam-map-heading { flex-wrap:wrap; }
+  .exam-map { grid-template-columns:repeat(auto-fill,minmax(42px,1fr)); gap:8px; }
+}
